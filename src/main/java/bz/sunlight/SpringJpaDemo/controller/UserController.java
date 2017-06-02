@@ -2,8 +2,10 @@ package bz.sunlight.SpringJpaDemo.controller;
 
 import bz.sunlight.SpringJpaDemo.bean.User;
 import bz.sunlight.SpringJpaDemo.service.UserService;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.ConstraintViolationException;
 import java.util.List;
 
 /**
@@ -46,17 +48,24 @@ public class UserController {
      * @return 根据id查询User
      */
     @RequestMapping("/{id}")
-    public User getUser(@PathVariable int id) {
+    public User getUser(@PathVariable("id") int id) {
         return userService.findOne(id);
     }
 
+//    @ExceptionHandler(value = {Exception.class})
+////    @ResponseStatus(HttpStatus.BAD_REQUEST)
+////    @ResponseBody
+//    public String constraintViolationException(Exception ex) {
+////        ex.printStackTrace();
+//        return "exception info....."+ex.getMessage();
+//    }
     /**
      * 根据userID删除user
      *
      * @param id userID
      */
     @RequestMapping("/delete/{id}")
-    public String deleteUser(@PathVariable int id) {
+    public String deleteUser(@PathVariable("id") int id) {
         userService.deleteOne(id);
         return "删除成功";
     }
