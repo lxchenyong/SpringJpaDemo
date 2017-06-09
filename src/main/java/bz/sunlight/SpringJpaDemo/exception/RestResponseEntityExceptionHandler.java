@@ -16,7 +16,8 @@ public class RestResponseEntityExceptionHandler {
 //    @ResponseStatus(HttpStatus.BAD_REQUEST)
 //    @ResponseBody
     public String constraintViolationException(Exception ex) {
-        return " ~~exception info......."+ex.getMessage();
+        ex.printStackTrace();
+        return " 错误信息......."+ex.getMessage();
     }
 
 

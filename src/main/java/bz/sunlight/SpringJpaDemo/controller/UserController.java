@@ -23,11 +23,31 @@ public class UserController {
 
     }
 
-    @RequestMapping(value = "/create/user",method = RequestMethod.GET)
-    public void create() {
-
+//    @RequestMapping(value = "/save/{name}/{address}",method = RequestMethod.POST)
+//    public String saveUser(@PathVariable String name,@PathVariable String address ) {
+//        User user = new User();
+//        user.setName(name);
+//        user.setAddress(address);
+//        userService.saveUser(user);
 //        return "创建成功";
+//    }
+
+    @RequestMapping(value = "/save",method = RequestMethod.POST)
+    public String saveUser(@RequestBody User user) {
+        System.out.println("user=="+user.toString());
+        userService.saveUser(user);
+        return "创建成功";
     }
+
+
+//    @RequestMapping(value = "/save",method = RequestMethod.POST)
+//    public String saveUser(@RequestBody String name,@RequestBody String address ) {
+//        User user = new User();
+//        user.setName(name);
+//        user.setAddress(address);
+//        userService.saveUser(user);
+//        return "创建成功";
+//    }
 
     /**
      * @param name    名字
